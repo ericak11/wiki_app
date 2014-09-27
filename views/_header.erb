@@ -1,0 +1,25 @@
+<section class="header">
+  <section id="blackBar">
+    <h1 id="page_title"><a href="/">WDI Wiki</a></h1>
+      <section id="top_nav">
+        <li>
+          <form class="header_search" action="/documents/index" method="get">
+            <input type="search" name="search" id="search" placeholder="search">
+            <input class="button" type="submit" value="Go">
+          </form>
+        </li>
+        <% if session[:current_user] %>
+          <li><form method="POST" action="/session">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="submit" value="Logout" />
+          </form></li>
+          <li><a class="header_link" id="add_new_doc" href="/documents/new">Add New Article</a></li>
+          <li><a class="header_link" id="view_profile" href="/users/<%=session[:current_user][:user_id]%>">View Profile</a></li>
+        <%else %>
+            <li><a class="header_link" id="log_in" href="/session/new">Log In</a></li>
+        <% end %>
+        <li><a class="header_link" id="browse" href="/documents">Browse Articles</a></li>
+      </section>
+
+  </section>
+</section>
