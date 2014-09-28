@@ -1,1 +1,11 @@
-<h1>Hello from New!</h1>
+<section class="doc_input_form">
+    <form action="/documents" method="post">
+    <label>Title: </label>
+        <input class="title_input" type="text" name="document[title]" id="doc_title" required>
+        <br><br>
+        <label for="content">Please make sure you are using Markdown when inputing document contents</label><br>
+        <textarea required name="content" id="content"></textarea><br>
+        <br>
+      <input class="submit_button" type="submit">
+  </form>
+</section>

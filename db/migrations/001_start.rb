@@ -5,7 +5,7 @@ Sequel.migration do
       String :email, :size=>500, :null=>false
       String :name, :size=>255, :null=>false
       String :google_id, :size=>127
-      String :gender, size=>127
+      String :gender, :size=>127
       FalseClass :admin
       String :password_digest
     end

@@ -1,1 +1,6 @@
-<h1>Hello from Show!</h1>
+
+<section class="main">
+
+<%= Diffy::Diff.new(@last_version, @compare_version, :include_plus_and_minus_in_html => true, :context => 1000).to_s(:html_simple) %>
+
+</section>

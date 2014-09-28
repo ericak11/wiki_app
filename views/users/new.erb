@@ -1,1 +1,14 @@
-<h1>Hello from New!</h1>
+  <section class="main">
+<h1>Sign Up or <a href="<%=@url%>">Authenticate With Google</a></h2></h1>
+<form method="POST" action="/users">
+  <label for="name">Name</label>
+  <input type="text" name="user[name]" id="name" /><br/>
+  <label for="email">Enter Email</label>
+  <input type="email" name="user[email]" id="email" /><br/>
+  <label for="password">Enter Password</label>
+  <input type="password" name="user[password]" id="password"/><br/>
+  <label for="password">Re-enter Password</label>
+  <input type="password" name="user[password_confirmation]" id="password_confirmation"/>
+  <input type="submit" value="Sign Up" />
+</form>
+  </section>

@@ -1,1 +1,11 @@
-<h1>Hello from Index!</h1>
+  <section class="main">
+<% if @user.admin %>
+<ul>
+  <% @users.each do |user| %>
+    <li><%=user.name%></li>
+  <% end %>
+</ul>
+<% else %>
+<p> you are not authorized to view this page </p>
+<% end %>
+  </section>

@@ -1,5 +1,7 @@
-  class UserController < ApplicationController
+class UserController < ApplicationController
   get('/') do
+    @user = User.find(id: session[:current_user][:id])
+    @users = User.all
     render(:erb, :"users/index")
   end
 
@@ -8,16 +10,22 @@
   end
 
   get('/edit') do
+    @user = User.find(id: params[:id])
     render(:erb, :"users/edit")
   end
 
   get('/:id') do
+    @user = User.find(id: params[:id]) #if session[:current_user][:id] == params[:id]
+
     render(:erb, :"users/show")
   end
 
   delete('/') do
+
   end
 
   post('/') do
+    User.create(params[:user])
+    redirect ("/")
   end
-  end
+end
