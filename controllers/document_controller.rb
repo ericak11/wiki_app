@@ -29,11 +29,17 @@ class DocumentController < ApplicationController
   get('/:id') do
     title = params[:id].gsub("_", " ")
     @document = Document.find(title: title)
+    @permission = Permission.find(user_id: session[:current_user][:id], document_id: @document.id)
     @version = Version.filter(document_id: @document.id).last
+    @last_edit = User.find(id: @version.user_id)
     render(:erb, :"documents/show")
   end
 
-  delete('/') do
+  delete('/:id') do
+    Version.filter(document_id: params[:id]).delete
+    Permission.filter(document_id: params[:id]).delete
+    Document.find(id: params[:id]).delete
+    redirect to("/")
   end
 
   post('/') do

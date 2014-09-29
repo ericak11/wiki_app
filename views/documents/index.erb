@@ -1,7 +1,7 @@
   <section class="main">
     <section class="box" id="posts">
     <h2 class="section_title"> Most Recent Posts </h2>
-    <% @docs.each_with_index do |doc, index| %>
+    <% @docs.each do |doc| %>
       <% title = doc.title %>
       <% title_link = title.gsub(" ", "_") %>
       <h3>
@@ -12,7 +12,7 @@
         </section>
       </h3>
     <% end %>
-    <% if @docs.length == 10 %><a href="/documents?first=<%= @first + 10 %>">NEXT</a><%end%>
+    <% if @documents.length > 10 && @docs.length == 10 %><a href="/documents?first=<%= @first + 10 %>">NEXT</a><%end%>
     <% if @docs.length < 10 && @documents.length > 10%><a href="/documents?first=<%= @first -10 %>">PREVIOUS</a><%end%>
      </section>
   </section>

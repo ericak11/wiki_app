@@ -1,8 +1,37 @@
   <section class="main">
+<section class="document_display">
 <h1><%= @document.title %></h1>
 <br><br>
 <%= @version.content %>
-<a href="<%=@document.title.gsub(" ", "_")%>/edit">Edit</a>
+<p>Last edit made by:
+    <span class="cursive"><%= @last_edit.name%></span>
+</p>
+<div id="edit_buttons">
+   <ul>
+<% if @permission%>
+  <% if @permission.creator? %>
+      <li><form method="post" action="/documents/<%=@document.id%>">
+           <input type="hidden" name="_method" value="DELETE" />
+           <input class="submit_button" type="submit" value="Delete" id="doc_delete">
+      </form></li>
+      <li><form action="<%=@document.title.gsub(" ", "_")%>/edit" method="get">
+        <input class="submit_button" type="submit" value="Edit" id="doc_edit">
+      </form></li>
+  <% elsif @permission.editor? %>
+     <li><form action="<%=@document.title.gsub(" ", "_")%>/edit" method="get">
+        <input class="submit_button" type="submit" value="Edit" id="doc_edit">
+      </form></li>
+  <% end %>
+  <% else %>
 
-<a href="<%=@document.title.gsub(" ", "_")%>/versions">See_versions</a>
-  </section>
+    <li><form method="post" action="/permissions/<%=@document.id%>">
+        <input class="submit_button" type="submit" value="Request Permission" id="add_permission">
+      </form></li>
+   <% end %>
+  <li><form method="get" action="<%=@document.title.gsub(" ", "_")%>/versions">
+      <input class="submit_button" type="submit" value="See_versions" id="See_versionsn">
+    </form></li>
+    </ul>
+   </div>
+ </section>
+
