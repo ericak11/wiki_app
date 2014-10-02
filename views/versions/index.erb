@@ -2,10 +2,10 @@
     <h2>Click on a version to see the differences from the current version</h2>
 <% @versions.each_with_index do |version, index| %>
   <% if @versions.count > index + 1 %>
-  <%= link_to(title, path) %>
-  <a href="/versions/<%=@document.title.gsub(" ", "_")%>/<%=version.id %>/show">Version <%= index + 1 %>: <%= version.created_at.strftime('%a, %b %d, %Y, %r') %></a><br>
+  <%=  %>
+  <a href="/versions/<%=@document.title.gsub(" ", "_")%>/<%=version.id %>/show">Version <%= index + 1 %>: <%= nice_date(version.created_at) %></a><br>
   <% else %>
-  <p>Current Version: <%= version.created_at.strftime('%a, %b %d, %Y, %r') %></p>
+  <p>Current Version: <%= nice_date(version.created_at) %></p>
   <% end %>
 <% end %>
   <section class="main">

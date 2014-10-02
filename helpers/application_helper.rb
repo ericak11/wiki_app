@@ -3,7 +3,7 @@ module ApplicationHelper
     '<a href="' + path + '">' + title + '</a>'
   end
 
-  def nice_date
-
+  def nice_date(new_date)
+    new_date.strftime('%a, %b %d, %Y, %r')
   end
 end

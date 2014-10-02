@@ -4,7 +4,7 @@
 <br><br>
 <%= @version.content %>
 <p>Last edit made by:
-    <span class="cursive"><%= @last_edit.name%></span>
+    <span class="cursive"><%= @last_edit.name%> on <%= nice_date(@version.created_at) %></span>
 </p>
 <div id="edit_buttons">
    <ul>
